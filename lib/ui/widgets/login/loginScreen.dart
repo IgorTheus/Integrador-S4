@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:integrador_s4/ui/widgets/home/home_screen.dart';
+import 'package:integrador_s4/ui/widgets/register/registerScreen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -19,12 +21,41 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _login() {
-    // TODO: validar e autenticar
-    debugPrint('Usuário: ${_userController.text}');
+    if (_userController.text == "admin" &&
+        _passwordController.text == "admin") {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+    }
   }
 
   void _goToRegister() {
-    // TODO: Navigator.push para a tela de register
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const RegisterScreen()),
+    );
+  }
+
+  InputDecoration _fieldDecoration(String hint) {
+    return InputDecoration(
+      hintText: hint,
+      hintStyle: const TextStyle(color: Colors.black38, fontSize: 13),
+      isDense: true,
+      filled: true,
+      fillColor: const Color(0xFFF7F8F7),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(22),
+        borderSide: const BorderSide(color: Color(0xFFE0E0E0)),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(22),
+        borderSide: const BorderSide(color: Color(0xFFE0E0E0)),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(22),
+        borderSide: const BorderSide(color: Color(0xFF4CAF7D), width: 1.4),
+      ),
+    );
   }
 
   @override
@@ -43,9 +74,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   Center(
                     child: Image.asset(
-                      'assets/images/logo.jpg',
-                      width: 90,
-                      height: 90,
+                      'assets/logo.png',
+                      width: 100,
+                      height: 100,
                       fit: BoxFit.contain,
                     ),
                   ),
@@ -63,14 +94,23 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 24),
                   const Text('Usuário:', style: TextStyle(fontSize: 14)),
                   const SizedBox(height: 6),
-                  _buildField(controller: _userController),
+                  TextField(
+                    controller: _userController,
+                    style: const TextStyle(fontSize: 14),
+                    decoration: _fieldDecoration('Digite seu usuário'),
+                  ),
                   const SizedBox(height: 16),
                   const Text('Senha:', style: TextStyle(fontSize: 14)),
                   const SizedBox(height: 6),
-                  _buildField(
+                  TextField(
                     controller: _passwordController,
-                    obscure: true,
+                    obscureText: true,
+                    onSubmitted: (_) => _login(),
+                    style: const TextStyle(fontSize: 14),
+                    decoration: _fieldDecoration('Digite sua senha'),
                   ),
+                  SizedBox(height: 20),
+                  ElevatedButton(onPressed: _login, child: Text("LOGAR")),
                   const SizedBox(height: 24),
                   Center(
                     child: GestureDetector(
@@ -86,28 +126,6 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildField({
-    required TextEditingController controller,
-    bool obscure = false,
-  }) {
-    return TextField(
-      controller: controller,
-      obscureText: obscure,
-      onSubmitted: (_) => _login(),
-      decoration: InputDecoration(
-        isDense: true,
-        filled: true,
-        fillColor: const Color(0xFFF3F6F3),
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
-          borderSide: BorderSide.none,
         ),
       ),
     );
