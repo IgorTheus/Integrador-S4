@@ -106,7 +106,14 @@ class _QrCodeCard extends StatelessWidget {
               style: TextStyle(fontSize: 15, fontWeight: FontWeight.w800),
             ),
             const SizedBox(height: 16),
-            const Icon(Icons.qr_code_2, size: 90, color: Colors.black87),
+            Transform.scale(
+              scale: 1.3,
+              child: Image.asset(
+                'assets/qrcodehd.png',
+                width: 90,
+                height: 90,
+              ),
+            ),
             const SizedBox(height: 16),
             const Text(
               'ESCANEAR QRCODE',
