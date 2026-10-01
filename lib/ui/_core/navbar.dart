@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import "package:integrador_s4/ui/widgets/scan/scanScreen.dart";
 
 enum NavItem { dashboard, historico, home, qrcode, ra }
 
@@ -18,16 +19,33 @@ class MainNavBar extends StatelessWidget {
     (
       item: NavItem.dashboard,
       image: 'assets/dashboard.png',
-      label: 'Dashboard'
+      label: 'Dashboard',
+      path: 'scanScreen.dart'
     ),
     (
       item: NavItem.historico,
       image: 'assets/historico.png',
-      label: 'Histórico'
+      label: 'Histórico',
+      path: 'scanScreen.dart'
     ),
-    (item: NavItem.home, image: 'assets/home.png', label: 'Home'),
-    (item: NavItem.qrcode, image: 'assets/qrcode.png', label: 'QRCode'),
-    (item: NavItem.ra, image: 'assets/ra.png', label: 'RA'),
+    (
+      item: NavItem.home,
+      image: 'assets/home.png',
+      label: 'Home',
+      path: 'scanScreen.dart'
+    ),
+    (
+      item: NavItem.qrcode,
+      image: 'assets/qrcode.png',
+      label: 'QRCode',
+      path: 'scanScreen.dart'
+    ),
+    (
+      item: NavItem.ra,
+      image: 'assets/ra.png',
+      label: 'RA',
+      path: 'scanScreen.dart'
+    ),
   ];
 
   @override
@@ -47,7 +65,15 @@ class MainNavBar extends StatelessWidget {
                 : (selected ? 1.15 : 1.0);
 
             return GestureDetector(
-              onTap: () => onItemSelected(entry.item),
+              onTap: () {
+                onItemSelected(entry.item);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const QRScannerPage(),
+                  ),
+                );
+              },
               behavior: HitTestBehavior.opaque,
               child: SizedBox(
                 width: 45,
