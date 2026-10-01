@@ -1,80 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_scanner/mobile_scanner.dart';
+import '../../_core/appbar.dart';
+import '../../_core/navbar.dart';
+import 'widget/camera_widget.dart';
+import 'widget/info_widget.dart';
 
-class QRScannerPage extends StatefulWidget {
-  const QRScannerPage({super.key});
+class ScanScreen extends StatefulWidget {
+  const ScanScreen({super.key});
 
   @override
-  State<QRScannerPage> createState() => _QRScannerPageState();
+  State<ScanScreen> createState() => _ScanScreenState();
 }
 
-class _QRScannerPageState extends State<QRScannerPage> {
-  bool _handled = false;
-  final MobileScannerController _controller = MobileScannerController(
-      detectionTimeoutMs: 600,
-      facing: CameraFacing.back, // camera traseira
-      torchEnabled: false);
+class _ScanScreenState extends State<ScanScreen> {
+  bool _cameraActive = false;
+  String? _scannedValue;
+
+  void _startCamera() => setState(() => _cameraActive = true);
+
+  void _onDetected(String value) {
+    setState(() {
+      _cameraActive = false;
+      _scannedValue = value;
+    });
+    // TODO: usar o valor para buscar informações do ativo, se necessário
+    debugPrint('QR Code lido: $value');
+  }
 
   @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  void _onDetect(BarcodeCapture capture) {
-    if (_handled) return;
-
-    final barcodes = capture.barcodes;
-
-    if (barcodes.isEmpty) return;
-
-    final raw = barcodes.first.rawValue;
-    if (raw == null || raw.isEmpty) return;
-    _handled = true;
-    Navigator.pop(context, raw); // devolve o valor lido
-  }
-
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
-        foregroundColor: Colors.white,
-        backgroundColor: Colors.black,
-        title: Text(
-          'App aula 09 - Escanear QRCode',
-          style: TextStyle(color: Colors.white),
-        ),
-        actions: [
-          IconButton(
-              onPressed: () => _controller.toggleTorch(),
-              icon: Icon(
-                Icons.flash_on,
-                color: Colors.white,
-              )),
-          IconButton(
-              onPressed: () => _controller.switchCamera(),
-              icon: Icon(Icons.cameraswitch, color: Colors.white))
-        ],
-      ),
-      body: Stack(
-        children: [
-          MobileScanner(
-            controller: _controller,
-            onDetect: _onDetect,
-          ),
-          IgnorePointer(
-            child: Center(
-              child: Container(
-                width: 240,
-                height: 240,
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.white70, width: 2),
-                    borderRadius: BorderRadius.circular(12)),
-              ),
+      backgroundColor: Colors.white,
+      appBar: const MainAppBar(userName: 'usuário'),
+      body: _cameraActive
+          ? CameraWidget(onDetected: _onDetected)
+          : InfoWidget(
+              onStart: _startCamera,
+              scannedValue: _scannedValue,
             ),
-          )
-        ],
-      ),
+      bottomNavigationBar: const MainNavBar(currentItem: NavItem.qrcode),
     );
   }
 }

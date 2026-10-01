@@ -73,10 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: MainNavBar(
-        currentItem: _currentItem,
-        onItemSelected: _onNavTap,
-      ),
+      bottomNavigationBar: MainNavBar(currentItem: _currentItem),
     );
   }
 }
