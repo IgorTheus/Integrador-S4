@@ -1,5 +1,13 @@
 # Integrador S4
 
+# Equipe
+- Danilo Macri da Silva
+- Danilo Nunes Fernandes
+- Igor Matheus Mariano da Silva
+- Kauã Rodrigues de Aguiar
+
+#
+
 Aplicativo mobile em Flutter para escaneamento de QR Code de ativos, com login, cadastro e navegação entre telas principais (Dashboard, Histórico, Home, QRCode e RA).
 
 ## Pré-requisitos
