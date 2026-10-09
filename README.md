@@ -1,12 +1,16 @@
-# Integrador S4
+# Projeto Integrador - TrackLog | Rastreamento de Ativos
 
-# Equipe
+## Equipe
 - Danilo Macri da Silva
 - Danilo Nunes Fernandes
 - Igor Matheus Mariano da Silva
 - Kauã Rodrigues de Aguiar
 
-#
+## Objetivo da aplicação
+A proposta busca centralizar as informações e facilitar o controle dos equipamentos. Com isso, será possível reduzir 
+erros e melhorar a confiabilidade dos registros. Para esse projeto, será desenvolvido um aplicativo mobile para 
+scanneamento dos QR Codes de cada máquina, integrado com um site, que será possível visualizar os dispositivos 
+do laboratório em questão e permite também a visualização de um dashboard informativo.
 
 Aplicativo mobile em Flutter para escaneamento de QR Code de ativos, com login, cadastro e navegação entre telas principais (Dashboard, Histórico, Home, QRCode e RA).
 
@@ -29,15 +33,15 @@ flutter doctor
 flutter pub get
 ```
 
-# Como rodar
-## Emulador
+## Como rodar
+### Emulador
 
 1. No VSCode, acesse o aqruivo main.dart e clique Run without debugger.
 2. Caso não tenha, crie um emulador via Android Studio que o aplicativo irá rodar.
 
 
 
-## Gerar APK
+### Gerar APK
 
 1. Rode:
 ```bash
@@ -55,8 +59,8 @@ build/app/outputs/flutter-apk/app-release.apk
 ## Funcionalidades implementadas até o momento
 
 ### Autenticação
-- **Login**: tela com logo, campos de usuário e senha, e link para cadastro.
-- **Cadastro**: tela com usuário, senha e confirmação de senha, com validação de senha != confirmação, e link para voltar ao login.
+- **Login**: tela com logo, campos de usuário e senha, e link com redirecionamento para o cadastro.
+- **Cadastro**: tela com usuário, senha e confirmação de senha, com validação de senha e link com redirecionamento para a tela de login.
 
 ### Navegação principal
 - **AppBar padrão**: logo do app, saudação ao usuário e botão de menu.
