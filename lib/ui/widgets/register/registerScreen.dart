@@ -27,7 +27,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
       );
       return;
     }
-    debugPrint('Cadastrar usuário: ${_userController.text}');
   }
 
   void _goToLogin() {
@@ -79,7 +78,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       fit: BoxFit.contain,
                     ),
                   ),
+                  
                   const SizedBox(height: 16),
+                  
                   const Center(
                     child: Text(
                       'CADASTRO',
@@ -90,27 +91,39 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                     ),
                   ),
+                  
                   const SizedBox(height: 24),
+                  
                   const Text('Usuário:', style: TextStyle(fontSize: 14)),
+                  
                   const SizedBox(height: 6),
+                  
                   TextField(
                     controller: _userController,
                     style: const TextStyle(fontSize: 14),
                     decoration: _fieldDecoration('Digite seu usuário'),
                   ),
+                  
                   const SizedBox(height: 16),
+                  
                   const Text('Senha:', style: TextStyle(fontSize: 14)),
+                  
                   const SizedBox(height: 6),
+                  
                   TextField(
                     controller: _passwordController,
                     obscureText: true,
                     style: const TextStyle(fontSize: 14),
                     decoration: _fieldDecoration('Digite sua senha'),
                   ),
+                  
                   const SizedBox(height: 16),
-                  const Text('Confirmar senha:',
-                      style: TextStyle(fontSize: 14)),
+                  
+                  const Text('Confirmar senha:', style: TextStyle(fontSize: 14)),
+
+                  
                   const SizedBox(height: 6),
+                  
                   TextField(
                     controller: _confirmPasswordController,
                     obscureText: true,
@@ -118,7 +131,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     style: const TextStyle(fontSize: 14),
                     decoration: _fieldDecoration('Confirme sua senha'),
                   ),
+                  
                   const SizedBox(height: 24),
+                  
                   Center(
                     child: GestureDetector(
                       onTap: _goToLogin,
