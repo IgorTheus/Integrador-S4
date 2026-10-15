@@ -19,10 +19,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
     switch (item) {
       case NavItem.dashboard:
-        // TODO: Navigator.push para Dashboard
+        // Navigator.push para Dashboard
         break;
       case NavItem.historico:
-        // TODO: Navigator.push para Histórico
+        // Navigator.push para Histórico
         break;
       case NavItem.home:
         break;
@@ -30,13 +30,13 @@ class _HomeScreenState extends State<HomeScreen> {
         _scanQrCode();
         break;
       case NavItem.ra:
-        // TODO: Navigator.push para RA
+        // Navigator.push para RA
         break;
     }
   }
 
   void _scanQrCode() {
-    // TODO: Navigator.push para a tela de scan (lib/ui/widgets/scan/scan.dart)
+    // Navigator.push para a tela de scan (lib/ui/widgets/scan/scan.dart)
   }
 
   @override

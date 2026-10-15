@@ -80,8 +80,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       fit: BoxFit.contain,
                     ),
                   ),
-                  const SizedBox(height: 16),
-                  const Center(
+
+                  SizedBox(height: 16),
+
+                  Center(
                     child: Text(
                       'LOGIN',
                       style: TextStyle(
@@ -91,17 +93,25 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 24),
-                  const Text('Usuário:', style: TextStyle(fontSize: 14)),
-                  const SizedBox(height: 6),
+
+                  SizedBox(height: 24),
+
+                  Text('Usuário:', style: TextStyle(fontSize: 14)),
+
+                  SizedBox(height: 6),
+
                   TextField(
                     controller: _userController,
                     style: const TextStyle(fontSize: 14),
                     decoration: _fieldDecoration('Digite seu usuário'),
                   ),
-                  const SizedBox(height: 16),
-                  const Text('Senha:', style: TextStyle(fontSize: 14)),
-                  const SizedBox(height: 6),
+
+                  SizedBox(height: 16),
+
+                  Text('Senha:', style: TextStyle(fontSize: 14)),
+
+                  SizedBox(height: 6),
+
                   TextField(
                     controller: _passwordController,
                     obscureText: true,
@@ -109,16 +119,29 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: const TextStyle(fontSize: 14),
                     decoration: _fieldDecoration('Digite sua senha'),
                   ),
+
                   SizedBox(height: 20),
-                  ElevatedButton(onPressed: _login, child: Text("LOGAR")),
-                  const SizedBox(height: 24),
+
+                  Center(
+                   child: ElevatedButton(
+                      onPressed: _login,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color.fromRGBO(229, 248, 236, 1),
+                        foregroundColor: Colors.black
+                      ),
+                      child: Text("LOGAR")
+                    ),
+                  ),
+
+                  SizedBox(height: 24),
+
                   Center(
                     child: GestureDetector(
                       onTap: _goToRegister,
                       child: const Text(
-                        'Não tem conta?\nCadastre-se',
+                        'Não tem conta? Cadastre-se',
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 12, color: Colors.black54),
+                        style: TextStyle(fontSize: 14, color: Colors.black),
                       ),
                     ),
                   ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:integrador_s4/ui/widgets/profile/profileScreen.dart';
 
 /// AppBar padrão do app: logo à esquerda, saudação ao centro/esquerda
 /// e menu hambúrguer à direita.
@@ -6,13 +7,11 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   const MainAppBar({
     super.key,
     this.userName,
-    this.onMenuTap,
   });
 
   final String? userName;
-  final VoidCallback? onMenuTap;
 
-  static const Color backgroundColor = Color(0xFFA9D3BB);
+  static Color backgroundColor = Color(0xFFA9D3BB);
 
   @override
   Widget build(BuildContext context) {
@@ -25,33 +24,43 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
         children: [
           Image.asset(
             'assets/logo.png',
-            width: 32,
-            height: 32,
+            width: 54,
+            height: 54,
             fit: BoxFit.contain,
           ),
-          const SizedBox(width: 10),
+          SizedBox(width: 10),
           Expanded(
             child: Text(
               'Olá ${userName ?? 'usuário'}!',
-              style: const TextStyle(
-                color: Colors.black87,
-                fontSize: 15,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 16,
                 fontWeight: FontWeight.w500,
               ),
               overflow: TextOverflow.ellipsis,
             ),
           ),
+
+          IconButton(
+            icon: Icon(
+              Icons.menu, 
+              color: Colors.black,
+              size: 32,
+            ),
+            onPressed: () {
+              Navigator.push(
+                context, 
+                MaterialPageRoute(
+                  builder: (context) => ProfileScreen()
+                )
+              );
+            },
+          ),
         ],
       ),
-      actions: [
-        IconButton(
-          icon: const Icon(Icons.menu, color: Colors.black87),
-          onPressed: onMenuTap,
-        ),
-      ],
     );
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => Size.fromHeight(kToolbarHeight);
 }
