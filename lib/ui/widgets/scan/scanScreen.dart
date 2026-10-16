@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../_core/appbar.dart';
 import '../../_core/navbar.dart';
+import '../../../data/qrcode_storage.dart';
 import 'widget/camera_widget.dart';
 import 'widget/info_widget.dart';
 
@@ -17,13 +18,47 @@ class _ScanScreenState extends State<ScanScreen> {
 
   void _startCamera() => setState(() => _cameraActive = true);
 
-  void _onDetected(String value) {
+  Future<void> _onDetected(String value) async {
     setState(() {
       _cameraActive = false;
       _scannedValue = value;
     });
-    // TODO: usar o valor para buscar informações do ativo, se necessário
-    debugPrint('QR Code lido: $value');
+
+    final nome = await _askName();
+    if (nome == null || nome.trim().isEmpty) return;
+
+    await QrCodeStorage.salvar(nome: nome.trim(), codigo: value);
+
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('"$nome" salvo com sucesso!')),
+      );
+    }
+  }
+
+  Future<String?> _askName() {
+    final controller = TextEditingController();
+    return showDialog<String>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Nomear QR Code'),
+        content: TextField(
+          controller: controller,
+          autofocus: true,
+          decoration: const InputDecoration(hintText: 'Ex: Máquina 01'),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancelar'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, controller.text),
+            child: const Text('Salvar'),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
