@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
-import 'package:integrador_s4/ui/_core/appbar.dart';
-import "package:integrador_s4/ui/_core/navbar.dart";
+import 'package:integrador_s4/src/ui/_core/appbar.dart';
+import "package:integrador_s4/src/ui/_core/navbar.dart";
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});

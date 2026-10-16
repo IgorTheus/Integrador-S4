@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../_core/appbar.dart';
 import '../../_core/navbar.dart';
-import '../../../data/qrcode_storage.dart';
+import '../../../../dados/qrcode_storage.dart';
 import 'widget/camera_widget.dart';
 import 'widget/info_widget.dart';
 

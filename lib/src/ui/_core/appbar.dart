@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:integrador_s4/ui/widgets/profile/profileScreen.dart';
+import 'package:integrador_s4/src/ui/widgets/profile/profileScreen.dart';
 
 /// AppBar padrão do app: logo à esquerda, saudação ao centro/esquerda
 /// e menu hambúrguer à direita.

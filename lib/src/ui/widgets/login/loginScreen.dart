@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:integrador_s4/ui/widgets/home/home_screen.dart';
-import 'package:integrador_s4/ui/widgets/register/registerScreen.dart';
+import 'package:integrador_s4/src/ui/widgets/home/home_screen.dart';
+import 'package:integrador_s4/src/ui/widgets/register/registerScreen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
