@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:integrador_s4/src/ui/_core/appbar.dart';
 import "package:integrador_s4/src/ui/_core/navbar.dart";
+import 'package:integrador_s4/src/ui/widgets/dashboard/dashboardScreen.dart';
+import 'package:integrador_s4/src/ui/widgets/historic/historicScreen.dart';
+import 'package:integrador_s4/src/ui/widgets/ra/raScreen.dart';
+import 'package:integrador_s4/src/ui/widgets/scan/scanScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -19,18 +23,23 @@ class _HomeScreenState extends State<HomeScreen> {
 
     switch (item) {
       case NavItem.dashboard:
-        // Navigator.push para Dashboard
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => DashboardScreen()));
         break;
       case NavItem.historico:
-        // Navigator.push para Histórico
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => HistoricScreen()));
         break;
       case NavItem.home:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => HomeScreen()));
         break;
       case NavItem.qrcode:
-        _scanQrCode();
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => ScanScreen()));
         break;
       case NavItem.ra:
-        // Navigator.push para RA
+        Navigator.push(context, MaterialPageRoute(builder: (_) => RaScreen()));
         break;
     }
   }

@@ -40,7 +40,7 @@ class MainNavBar extends StatelessWidget {
       NavItem.home => const HomeScreen(),
       NavItem.qrcode => const ScanScreen(),
       NavItem.dashboard => const DashboardScreen(),
-      NavItem.historico => const HistoricoScreen(),
+      NavItem.historico => const HistoricScreen(),
       NavItem.ra => const RaScreen(),
     };
 
