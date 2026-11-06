@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _scanQrCode() {
-    // Navigator.push para a tela de scan (lib/ui/widgets/scan/scan.dart)
+    // Navigator.push para a tela de scan (lib/ui/widgets/scan/scan.dart))
   }
 
   @override
